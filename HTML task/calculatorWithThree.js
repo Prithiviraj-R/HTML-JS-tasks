@@ -7,14 +7,14 @@ var data="";
 //method to enter the numbers.
 function number(num)
 {
-    normalcolor();
-    var displayElement=document.getElementById("display");
+    // normalcolor();
     if(operator!='' && number1=='')
     {
         number1="0";
         operator=operator;
         // operator='';
     }
+    var displayElement=document.getElementById("display");
 	if(operator=="" && number2=="" || operator=="√")  
 	{
 		number1 += num;
@@ -30,12 +30,19 @@ function number(num)
 	}
 	else
 	{
-        normalcolor();
-        if(num=='*' || num=='*' || num=='/')
+        // normalcolor();
+        if(num=='+' || num=='*' || num=='/')
         {
             num.replace(num.charAt(0),"");
         }
-		number2+=num;
+        if(number1=="0")
+        {
+            number2=num;    
+        }
+        else
+        {
+		    number2+=num;
+        }
         document.getElementById('overall').value+=num;
 		displayElement.value=number2;
     }
@@ -44,7 +51,7 @@ function number(num)
 //method to do Operations.
 function oper(sign)
 {
-    if(number1!=0 && number2!=0 && operator!=0)
+    if(number1!=0 && number2!=0 && operator!='')
     {
         ans=operations(number1,number2,operator);
         number1=ans.toString();
@@ -78,7 +85,11 @@ function oper(sign)
     else
     {
             document.getElementById("display").value='';
-            operator=sign;  
+            operator=sign;
+            if(operator!='' && number1=='')
+            {
+                document.getElementById('overall').value+='0';
+            }  
             document.getElementById("overall").value+=operator;
             normalcolor();
             if(number1=="")
