@@ -16,11 +16,14 @@
                 <div class="buttons">
                         <table>
                             <tr>
-                                <input type="text" id="display">
+                                <div class="inputContainer">
+                                <input type="text" id="overall" readonly="readonly">
+                                <input type="text" id="display" readonly="readonly">
+                                </div>
                             </tr>
                             <tr>
                                 <td><input type="button" onclick="clearDisplay()"   class="clear" value="C"></td>  
-                                <td><input type="button" onclick="operation('%',id)" id="Modulo" value="%"></td>  
+                                <td><input type="button" onclick="oper('%')" id="Modulo" value="%"></td>  
                                 <td><input type="button" value="b "></td>  
                                 <td><input type="button" onclick="oper('/')" id="D" value=" / "></td>   
                             </tr>
@@ -34,7 +37,7 @@
                                 <td><input type="button" onclick="number('4')" value="4 "></td>  
                                 <td><input type="button" onclick="number('5')" value="5 "></td>  
                                 <td><input type="button" onclick="number('6')" value="6 "></td>  
-                                <td><input type="button" onclick="oper('-')" id="S" name="S" value="-  "></td>   
+                                <td><input type="button" onclick="oper('-')" id="S" name="S" value=" - "></td>   
                             </tr>
                             <tr>
                                 <td><input type="button" onclick="number('1')" value="1 "></td>  
@@ -43,7 +46,7 @@
                                 <td><input type="button" onclick="oper('+')" id="A" name="A" value="+ "></td>   
                             </tr>
                             <tr> 
-                                <td><input type="button" onclick="numbers('√')" id="zero" value="√ "></td>  
+                                <td><input type="button" onclick="oper('√')" id="sqrt" value="√ "></td>  
                                 <td><input type="button" onclick="number('0')" id="zero" value="0 "></td>  
                                 <td><input type="button" onclick="number('.')" value=".  "></td>  
                                 <td><input type="button" onclick="process()" class="equal" value="= "></td>   
@@ -53,5 +56,5 @@
         </div>
     </section>
 </body>
-<script src="calculator.js"></Script>
+<script src="calculatorWithThree.js"></Script>
 </html>

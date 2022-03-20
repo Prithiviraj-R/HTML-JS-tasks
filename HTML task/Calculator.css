@@ -4,9 +4,15 @@ div.container
   max-width:270px;
   margin:auto 600px;
   box-shadow:10px 10px 10px 10px rgba(153,153,153,1);
-  background-color: #00004d;
+  background-color:#00004d;
   border-radius:20px;
   position:fixed;
+}
+div.inputContainer
+{
+  border:none;
+  background-color:#c4c4d4;
+  border-radius:20px;
 }
 h6.heading
 {
@@ -55,16 +61,17 @@ input[type="button"]
 }
 input[type="text"]
 {
-  padding:40px;
-  width:179px;
+  height:5px;
+  padding:20px;
+  width:220px;
   text-align:right;
   margin-left:4px;
   background-color:#c4c4d4;
-  border-radius:10px;
+  border:1px solid #c4c4d4;
+  border-radius:20px;
   color:#00004d;
-  font-weight:20px;
+  font-weight:15px;
   font-size:30px;
-  box-shadow:1px 0px 1px 0px rgba(153,153,153);
 }
 input[type="button"]:hover
 {

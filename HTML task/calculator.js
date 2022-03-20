@@ -1,6 +1,7 @@
-// || numbers.length==0
 var numbers=[];
 var operators=[];
+var ans=0;
+var data="";
 function number(num)
 {
     data=document.getElementById("display").value+=num;
@@ -9,8 +10,6 @@ function oper(sign)
 {
     if(sign=="-")
     {
-        console.log(operators);
-        console.log(operators.length-1);
         if(operators[0]==undefined)
         {
             operators.push(sign);
@@ -59,7 +58,6 @@ function process()
 {
     numbers.push(data);
     document.getElementById("display").value="";
-    var ans=0
     for(var k=0;k<numbers.length;k++)
     {
         if(k==0)
@@ -94,19 +92,19 @@ function operations(firstNum,secondNum,sign)
 {
     if(sign=="+")
     {
-       return firstNum+secondNum;
+       return parseFloat(firstNum)+parseFloat(secondNum);
     }
     else if(sign=="-")
     {
-       return firstNum-secondNum;
+       return parseFloat(firstNum)-parseFloat(secondNum);
     }
     else if(sign=="*")
     {
-       return firstNum*secondNum;
+       return parseFloat(firstNum)*parseFloat(secondNum);
     }
     else if(sign=="/")
     {
-       return firstNum/secondNum;
+       return parseFloat(firstNum)/parseFloat(secondNum);
     }
 }
 
@@ -116,3 +114,4 @@ function clearDisplay()
     numbers=[];
     operators=[];
 }
+
