@@ -1,7 +1,7 @@
 div.container
 {
   padding:20px;
-  max-width:270px;
+  max-width:272px;
   margin:auto 600px;
   box-shadow:10px 10px 10px 10px rgba(153,153,153,1);
   background-color:#00004d;
@@ -11,6 +11,7 @@ div.container
 div.inputContainer
 {
   border:none;
+  width:270px;
   background-color:#c4c4d4;
   border-radius:20px;
 }
@@ -59,6 +60,33 @@ input[type="button"]
   opacity:40;
   box-shadow:0px 0px 2px 2px rgba(0, 0, 102,1);
 }
+
+input[type="button"].power
+{
+  transition-duration: 0.5s;
+  border-radius:10px;
+  padding:22.5px 20px 22.5px;
+  border:1px solid black;
+  color:black;
+  font-weight:bold;
+  font-size:19px;
+  opacity:40;
+  box-shadow:0px 0px 2px 2px rgba(0, 0, 102,1);
+}
+
+/* input[type="button"]#M
+{
+  transition-duration: 0.5s;
+  border-radius:10px;
+  padding:19px 32px 27px 19.5px;
+  border:1px solid black;
+  color:black;
+  font-weight:bold;
+  font-size:19px;
+  opacity:40;
+  box-shadow:0px 0px 2px 2px rgba(0, 0, 102,1);
+} */
+
 input[type="text"]
 {
   height:5px;
@@ -70,8 +98,23 @@ input[type="text"]
   border:1px solid #c4c4d4;
   border-radius:20px;
   color:#00004d;
-  font-weight:15px;
+  font-weight:500px;
   font-size:30px;
+}
+
+input[type="text"].steps
+{
+  height:5px;
+  padding:20px;
+  width:220px;
+  text-align:right;
+  margin-left:4px;
+  background-color:#c4c4d4;
+  border:1px solid #c4c4d4;
+  border-radius:20px;
+  color:#00004d;
+  font-weight:15px;
+  font-size:20px;
 }
 input[type="button"]:hover
 {

@@ -2,9 +2,9 @@ var numbers=[];
 var operators=[];
 var ans=0;
 var data="";
-function number(num)
+function num(number)
 {
-    data=document.getElementById("display").value+=num;
+    data=document.getElementById("display").value+=number;
 }
 function oper(sign)
 {
