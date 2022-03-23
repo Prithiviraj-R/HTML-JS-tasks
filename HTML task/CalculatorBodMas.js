@@ -19,14 +19,16 @@ function brac(symbol)
         content.push(data);
     }
     content.push(symbol);
-    operator=sign;
+    // operator=sign;
     console.log("from Brac:"+content);
     document.getElementById("display").value="";
 }
 
 function oper(sign)
 {
-    console.log(operator);
+    if(!minusFlag)
+    {
+        console.log(operator);
         if(data.charAt(data.length-1)!="*" || (content[content.length-1]!="*" && data!="-"))
         {
             if(content[content.length-1]!=")")
@@ -38,6 +40,7 @@ function oper(sign)
             document.getElementById("display").value="";
             console.log("from operation:"+content);
         }
+    }
 }
 
 function sub(sign)
@@ -106,8 +109,13 @@ function recursion(arr)
     var res="";
     while(true)
     {
+        console.log(arr);
         if(arr.length==1)
         {
+            if(arr[0]=="+" || arr[0]=="-" || arr[0]=="*" || arr[0]=="/")
+            {
+                alert("Please Enter the number in between brackets");
+            }
             res=arr[0];
             break;
         }
@@ -206,6 +214,7 @@ function clearDisplay()
     content=[];
     operator="";
     data="";
+    minusFlag=false;
     document.getElementById("display").value="";
     document.getElementById("overall").value="";
 }
