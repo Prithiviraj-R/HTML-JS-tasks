@@ -1,8 +1,8 @@
 div.container
 {
   padding:20px;
-  max-width:272px;
-  margin:auto 600px;
+  max-width:338px;
+  margin:auto 40%;
   box-shadow:10px 10px 10px 10px rgba(153,153,153,1);
   background-color:#00004d;
   border-radius:20px;
@@ -11,7 +11,7 @@ div.container
 div.inputContainer
 {
   border:none;
-  width:270px;
+  width:335px;
   background-color:#c4c4d4;
   border-radius:20px;
 }
@@ -24,18 +24,17 @@ h6.heading
   height:10px;
   margin-top:-53px;
   width:10px;
-  margin-left:175px;
+  margin-left:245px;
 }
 h6.model
 {
   color:white;
   text-align:end;
-  margin-right:10px;
   font-size:small;
   height:10px;
   margin-top:-35px;
   width:10px;
-  margin-left:198px;
+  margin-left:270px;
 }
 h6.company
 {
@@ -50,6 +49,7 @@ h6.company
 }
 input[type="button"]
 {
+  cursor:pointer;
   transition-duration: 0.5s;
   border-radius:10px;
   padding:22.5px;
@@ -61,11 +61,13 @@ input[type="button"]
   box-shadow:0px 0px 2px 2px rgba(0, 0, 102,1);
 }
 
-input[type="button"].power
+input[type="button"].equal
 {
+  cursor:pointer;
+  width:130px;
   transition-duration: 0.5s;
   border-radius:10px;
-  padding:22.5px 20px 22.5px;
+  padding:22.5px;
   border:1px solid black;
   color:black;
   font-weight:bold;
@@ -74,24 +76,45 @@ input[type="button"].power
   box-shadow:0px 0px 2px 2px rgba(0, 0, 102,1);
 }
 
-/* input[type="button"]#M
+input[type="button"]:active
+{
+  /* background-color: #3e8e41; */
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+input[type="button"].power
 {
   transition-duration: 0.5s;
   border-radius:10px;
-  padding:19px 32px 27px 19.5px;
+  padding:22.5px 21px 22.5px;
   border:1px solid black;
   color:black;
   font-weight:bold;
   font-size:19px;
   opacity:40;
   box-shadow:0px 0px 2px 2px rgba(0, 0, 102,1);
-} */
+  
+}
+
+input[type="button"]#M
+{
+  transition-duration: 0.5s;
+  border-radius:10px;
+  padding:18.5px 25px 25.5px 19.5px;
+  border:1px solid black;
+  color:black;
+  font-weight:bold;
+  font-size:19px;
+  opacity:40;
+  box-shadow:0px 0px 2px 2px rgba(0, 0, 102,1);
+}
 
 input[type="text"]
 {
   height:5px;
   padding:20px;
-  width:220px;
+  width:287px;
   text-align:right;
   margin-left:4px;
   background-color:#c4c4d4;
@@ -106,7 +129,7 @@ input[type="text"].steps
 {
   height:5px;
   padding:20px;
-  width:220px;
+  width:287px;
   text-align:right;
   margin-left:4px;
   background-color:#c4c4d4;
