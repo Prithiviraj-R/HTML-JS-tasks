@@ -5,6 +5,7 @@ var minusFlag=false;
 var doubleCheck="";
 var answer="";
 var specialSymbol="";
+var bracCount=0;
 function num(number)
 {
         doubleCheck="";
@@ -19,6 +20,16 @@ function num(number)
 
 function brac(symbol)
 {
+    if(symbol=="(")
+    {
+       bracCount++;
+    }
+    if(bracCount>0)
+    {
+    if(symbol==")")
+    {
+        bracCount--;
+    }
     console.log("content Array At start:"+content[content.length-1])
     console.log("previous Entered Number:"+doubleCheck)
     if(content[content.length-1]==")" && symbol=="(")
@@ -51,36 +62,29 @@ function brac(symbol)
     document.getElementById("display").value="";
     data="";
     console.log(content);
+    }
 }
-function specOper(fri,oper)
+function specOper(numberForSpecOper,oper)
 {
     if(oper=="√")
     {
-    //   var as=Math.sqrt(parseFloat(fri));
-    if(Math.sign(fri)==-1)
-    {
-        var as=(Math.pow(parseFloat(fri),0.5));
-        return as;
-    }
-    else
-    {
-        var as=Math.pow(parseFloat(fri),0.5);
-        return as;
-    }
+        var ans=Math.pow(parseFloat(numberForSpecOper),0.5);
+        return ans;
     }
     else if(oper=="^2")
     {
-      var as=Math.pow(parseFloat(fri),2);
-      return as;
+        var ans=Math.pow(parseFloat(numberForSpecOper),2);
+        return ans;
     }
     else if(oper=="^3")
     {
-      var as=Math.pow(parseFloat(fri),3);
-      return as;
+        var ans=Math.pow(parseFloat(numberForSpecOper),3);
+        return ans;
     }
 }
 function oper(sign)
 {
+    buttonNormalDisp();
     if(sign=="√")
     {
         content.push("√");
@@ -90,7 +94,7 @@ function oper(sign)
     }
     else if(sign=="^2")
     {
-        if(doubleCheck=="+" || doubleCheck=="-" || doubleCheck=="*" || doubleCheck=="/" || content[content.length-1]=="√"){}
+        if(doubleCheck=="+" || doubleCheck=="-" || doubleCheck=="*" || doubleCheck=="/" || content[content.length-1]=="√" || data==""){}
         else
         {
             if(data!="")
@@ -98,6 +102,7 @@ function oper(sign)
                 content.push(data);
             }
             content.push("^2");
+            event.target.style.background='green';
             document.getElementById("overall").value+=sign;
             document.getElementById("display").value="";
             data="";
@@ -115,6 +120,7 @@ function oper(sign)
                 content.push(data);
             }
             content.push("^3");
+            event.target.style.background='green';
             document.getElementById("overall").value+=sign;
             document.getElementById("display").value="";
             data="";
@@ -127,9 +133,9 @@ function oper(sign)
         console.log(operator);
         if(data.charAt(data.length-1)!="*" || (content[content.length-1]!="*" && data!="-"))
         {
-            if(content[content.length-1]!="√")
-            {
-                if(content[content.length-1]==undefined && (sign=="/" || sign=="*" || sign=="%"))
+            // if(content[content.length-1]!="√")
+            // {
+                if(content[content.length-1]==undefined && (sign=="/" || sign=="*" || sign=="%") && data=='')
                 {
                         content.push("0");
                         document.getElementById("overall").value+="0";
@@ -142,15 +148,17 @@ function oper(sign)
                 doubleCheck=sign;
                 document.getElementById("overall").value+=sign;
                 document.getElementById("display").value="";
+                event.target.style.background='green';
                 data="";
                 console.log("from operation:"+content);
-            }
+            // }
         }
     }
 }
 
 function sub(sign)
 {
+    buttonNormalDisp();
     if(sign=="-")
     {
         if(operator!="-")
@@ -162,11 +170,13 @@ function sub(sign)
                     content.push(sign);
                     document.getElementById("display").value="";
                     document.getElementById("overall").value+="-";
+                    event.target.style.background='green';
                     data="";
                     minusFlag=false;
             }
             else if(document.getElementById("display").value!="")
             {
+                event.target.style.background='green';
                     operator='';
                     content.push(data);
                     content.push(sign);
@@ -177,6 +187,7 @@ function sub(sign)
             }
             else if(content[content.length-1]==")" && data=="")
             {
+                event.target.style.background='green';
                     operator='';
                     content.push(sign);
                     document.getElementById("display").value="";
@@ -186,13 +197,15 @@ function sub(sign)
             }
             else if(data=="" || content[content.length-1]=="-" || content[content.length-1]=="(" || content[content.length-1]=="*" || content[content.length-1]=="+")
             {
+                event.target.style.background='white';
                     operator="-";
                     document.getElementById("display").value+="-";
-                    document.getElementById("overall").value+="-"
+                    document.getElementById("overall").value+="-";
                     minusFlag=true;
             }
             else if(data!="" && content[content.length-1]=="(")
             {
+                    event.target.style.background='green';
                     operator="";
                     content.push(data);
                     content.push(sign);
@@ -207,6 +220,7 @@ function sub(sign)
 
 function process()
 {
+    buttonNormalDisp();
     if(content[content.length-1]!=")" && data!="")
     {
         content.push(data);
@@ -257,6 +271,10 @@ function recursion(arr)
     while(true)
     {
         console.log(arr);
+        if(arr.length==0)
+        {
+            break;
+        }
         if(arr.length==1)
         {
             res=arr[0];
@@ -266,6 +284,11 @@ function recursion(arr)
         {
             positionOfOpenBrac=arr.lastIndexOf("(");
             position2=arr.indexOf(")",positionOfOpenBrac);
+            if(positionOfOpenBrac>position2)
+            {
+                document.getElementById("display").value="brackets are wrongly placed";
+                break;
+            }
             bracArray=arr.slice(positionOfOpenBrac+1,position2);
             arr.splice(positionOfOpenBrac,position2-positionOfOpenBrac+1,recursion(bracArray));
         }
@@ -367,11 +390,25 @@ function operations(firstNum,secondNum,sign)
 }
 function clearDisplay()
 {
+    buttonNormalDisp();
     content=[];
     operator="";
     data="";
     doubleCheck="";
     minusFlag=false;
+    bracCount=0;
     document.getElementById("display").value="";
     document.getElementById("overall").value="";
+}
+
+function buttonNormalDisp()
+{
+    document.getElementById("S").style.background="white";
+    document.getElementById("A").style.background="white";
+    document.getElementById("M").style.background="white";
+    document.getElementById("D").style.background="white";
+    document.getElementById("Modulo").style.background="white";
+    document.getElementById("square").style.background="white";
+    document.getElementById("sqrt").style.background="white";
+    document.getElementById("cube").style.background="white";
 }
